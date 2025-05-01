@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Book</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Edit Book Details</h2>
+        <form action="/add" method="post" th:object="${book}" class="p-4 shadow rounded bg-light">
+            <input type="hidden" th:field="*{id}">
+            <div class="form-group">
+                <label for="name">Book Name:</label>
+                <input type="text" id="name" name="name" th:field="*{name}" class="form-control" placeholder="Enter book name" required>
+            </div>
+            <div class="form-group">
+                <label for="status">Status:</label>
+                <select id="status" name="status" th:field="*{status}" class="form-control" required>
+                    <option value="Available" th:selected="${book.status == 'Available'}">Available</option>
+                    <option value="Not Available" th:selected="${book.status == 'Not Available'}">Not Available</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Update Book</button>
+            <a href="/manage" class="btn btn-secondary btn-block">Back to Manage Page</a>
+        </form>
+    </div>
+</body>
+</html>
